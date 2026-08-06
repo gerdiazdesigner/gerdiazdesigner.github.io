@@ -33,6 +33,15 @@ book.appendChild(gutter);
 book.appendChild(rightCanvas);
 
 // =========================
+// ESTADO DEL VISOR
+// =========================
+
+let currentSpread = 0;
+
+// El PDF comienza en la página 2
+const totalSpreads = Math.floor((pdf.numPages - 1) / 2);
+
+// =========================
 // RENDERIZAR UNA PÁGINA
 // =========================
 
@@ -71,13 +80,63 @@ async function renderSpread(spread) {
 }
 
 // =========================
-// ESTADO DEL VISOR
-// =========================
-
-let currentSpread = 0;
-
-// =========================
 // MOSTRAR PRIMER SPREAD
 // =========================
 
 await renderSpread(currentSpread);
+
+// =========================
+// BOTONES
+// =========================
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+// =========================
+// ACTUALIZAR ESTADO BOTONES
+// =========================
+
+function updateButtons() {
+
+    prevButton.disabled = currentSpread === 0;
+    nextButton.disabled = currentSpread >= totalSpreads - 1;
+
+}
+
+// =========================
+// FLECHA DERECHA
+// =========================
+
+nextButton.addEventListener("click", async () => {
+
+    if (currentSpread >= totalSpreads - 1) return;
+
+    currentSpread++;
+
+    await renderSpread(currentSpread);
+
+    updateButtons();
+
+});
+
+// =========================
+// FLECHA IZQUIERDA
+// =========================
+
+prevButton.addEventListener("click", async () => {
+
+    if (currentSpread <= 0) return;
+
+    currentSpread--;
+
+    await renderSpread(currentSpread);
+
+    updateButtons();
+
+});
+
+// =========================
+// ESTADO INICIAL
+// =========================
+
+updateButtons();
