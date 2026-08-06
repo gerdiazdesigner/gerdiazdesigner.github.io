@@ -120,8 +120,8 @@ prevButton.addEventListener("click", async () => {
 // SCROLL
 // =========================
 
-window.addEventListener("wheel", async (event) => {
-
+book.addEventListener("wheel", async (event) => {
+    
     event.preventDefault();
 
     if (isScrolling) return;
