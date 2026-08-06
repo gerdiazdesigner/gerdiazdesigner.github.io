@@ -144,8 +144,10 @@ body{
 
     display:block;
 
-    width:calc((100vw - 180px) / 2);
-
+.page{
+    display:block;
+    height:auto;
+}
     height:auto;
 
     max-width:700px;
