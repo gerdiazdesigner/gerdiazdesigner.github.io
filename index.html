@@ -3,131 +3,44 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Germán Parada | Surface Pattern Designer</title>
+    <title>Germán Parada | Surface Pattern Designer</title>
 
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-
-    background:#FAFAF8;
-    color:#1B1B1B;
-    font-family:Arial, Helvetica, sans-serif;
-
-}
-
-.hero{
-
-    min-height:70vh;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-
-    text-align:center;
-
-    padding:60px 20px;
-
-}
-
-.avatar{
-
-    width:90px;
-    height:90px;
-
-    border-radius:50%;
-
-    background:#ddd;
-
-    margin-bottom:28px;
-
-}
-
-.hero h1{
-
-    font-size:54px;
-    font-weight:700;
-    letter-spacing:.04em;
-
-    margin-bottom:14px;
-
-}
-
-.hero h2{
-
-    font-size:24px;
-    font-weight:400;
-
-    color:#555;
-
-}
-
-.hero p{
-
-    margin-top:22px;
-
-    color:#777;
-
-    font-size:18px;
-
-}
-
-.scroll{
-
-    margin-top:90px;
-
-    font-size:14px;
-
-    color:#999;
-
-}
-
-#viewer{
-
-    width:min(1500px,92vw);
-
-    margin:0 auto 120px auto;
-
-    min-height:800px;
-
-}
-
-</style>
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<section class="hero">
+    <header class="hero">
 
-<div class="avatar"></div>
+        <div class="avatar"></div>
 
-<h1>GERMÁN PARADA</h1>
+        <h1>GERMÁN PARADA</h1>
 
-<h2>Surface Pattern Designer & Illustrator</h2>
+        <h2>Surface Pattern Designer & Illustrator</h2>
 
-<p>Independent artist based in Colombia.</p>
+        <p>Independent artist based in Colombia.</p>
 
-<div class="scroll">
+        <div class="scroll">
+            Scroll to explore
+        </div>
 
-Scroll to explore
+    </header>
 
-</div>
+    <main>
 
-</section>
+        <section id="viewer"></section>
 
-<main id="viewer"></main>
+    </main>
 
-<script type="module" src="script.js"></script>
+    <script type="module" src="script.js"></script>
+
+</body>
+
+</html>
 
 </body>
 
