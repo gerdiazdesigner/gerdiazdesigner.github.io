@@ -1,6 +1,6 @@
 import * as pdfjsLib from "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.5.136/pdf.min.mjs";
 
-console.log("script cargado");
+alert("script cargado");
 
 pdfjsLib.GlobalWorkerOptions.workerSrc =
     "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.5.136/pdf.worker.min.mjs";
@@ -124,7 +124,7 @@ prevButton.addEventListener("click", async () => {
 
 window.addEventListener("wheel", async (event) => {
     
-    console.log("wheel");
+alert("wheel");
     
     event.preventDefault();
 
