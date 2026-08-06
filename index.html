@@ -14,7 +14,7 @@
 
 <body>
 
-    <header class="hero">
+    <section class="hero">
 
         <div class="avatar"></div>
 
@@ -28,31 +28,33 @@
             Scroll to explore
         </div>
 
-    </header>
+    </section>
 
-   <main>
+    <main>
 
-    <section id="viewer">
+        <section id="viewer">
 
-        <div class="stage">
+            <div class="stage">
 
-            <div class="book">
+                <button id="prevButton" class="nav-button" aria-label="Previous spread">
+                    &#10094;
+                </button>
 
-                <!-- PDF.js insertará aquí los canvas -->
+                <div class="book">
+                    <!-- PDF.js inserta aquí los canvas -->
+                </div>
+
+                <button id="nextButton" class="nav-button" aria-label="Next spread">
+                    &#10095;
+                </button>
 
             </div>
 
-        </div>
+        </section>
 
-    </section>
-
-</main>
+    </main>
 
     <script type="module" src="script.js"></script>
-
-</body>
-
-</html>
 
 </body>
 
