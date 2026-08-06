@@ -120,7 +120,7 @@ prevButton.addEventListener("click", async () => {
 // SCROLL
 // =========================
 
-document.addEventListener("wheel", async (event) => {
+window.addEventListener("wheel", async (event) => {
     
     console.log("wheel");
     
