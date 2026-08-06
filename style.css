@@ -1,1 +1,121 @@
+/* ==========================
+   RESET
+========================== */
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* ==========================
+   BODY
+========================== */
+
+body{
+
+    background:#FAFAF8;
+    color:#1B1B1B;
+
+    font-family:Arial, Helvetica, sans-serif;
+
+}
+
+/* ==========================
+   HERO
+========================== */
+
+.hero{
+
+    min-height:70vh;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:60px 20px;
+
+}
+
+/* ==========================
+   AVATAR
+========================== */
+
+.avatar{
+
+    width:90px;
+    height:90px;
+
+    border-radius:50%;
+
+    background:#DDD;
+
+    margin-bottom:28px;
+
+}
+
+/* ==========================
+   TITLES
+========================== */
+
+.hero h1{
+
+    font-size:54px;
+    font-weight:700;
+
+    letter-spacing:.04em;
+
+    margin-bottom:14px;
+
+}
+
+.hero h2{
+
+    font-size:24px;
+    font-weight:400;
+
+    color:#555;
+
+}
+
+/* ==========================
+   TEXT
+========================== */
+
+.hero p{
+
+    margin-top:22px;
+
+    font-size:18px;
+
+    color:#777;
+
+}
+
+.scroll{
+
+    margin-top:90px;
+
+    font-size:14px;
+
+    color:#999;
+
+}
+
+/* ==========================
+   BOOK VIEWER
+========================== */
+
+#viewer{
+
+    width:min(1500px,92vw);
+
+    min-height:800px;
+
+    margin:0 auto 120px auto;
+
+}
