@@ -56,9 +56,36 @@ async function renderPage(pageNumber, canvas){
 
 }
 
-// ----------
-// Primer spread
-// ----------
+async function renderPage(pageNumber, canvas){
 
-await renderPage(2, leftCanvas);
-await renderPage(3, rightCanvas);
+    const page = await pdf.getPage(pageNumber);
+
+    const viewport = page.getViewport({ scale: 1 });
+
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+
+    const context = canvas.getContext("2d");
+
+    await page.render({
+
+        canvasContext: context,
+        viewport: viewport
+
+    }).promise;
+
+}
+
+async function renderSpread(spread){
+
+    const leftPage = 2 + (spread * 2);
+    const rightPage = leftPage + 1;
+
+    await renderPage(leftPage, leftCanvas);
+    await renderPage(rightPage, rightCanvas);
+
+}
+
+let currentSpread = 0;
+
+await renderSpread(currentSpread);
