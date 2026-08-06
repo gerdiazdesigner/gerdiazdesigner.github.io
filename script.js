@@ -121,6 +121,8 @@ prevButton.addEventListener("click", async () => {
 // =========================
 
 book.addEventListener("wheel", async (event) => {
+
+    console.log("wheel");
     
     event.preventDefault();
 
