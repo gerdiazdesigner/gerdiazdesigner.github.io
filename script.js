@@ -117,48 +117,6 @@ prevButton.addEventListener("click", async () => {
 });
 
 // =========================
-// SCROLL
-// =========================
-
-window.addEventListener("wheel", async (event) => {
-    
-alert("wheel");
-    
-    event.preventDefault();
-
-    if (isScrolling) return;
-
-    isScrolling = true;
-
-    if (event.deltaY > 0) {
-
-        if (currentSpread < totalSpreads - 1) {
-
-            currentSpread++;
-            await renderSpread(currentSpread);
-
-        }
-
-    } else {
-
-        if (currentSpread > 0) {
-
-            currentSpread--;
-            await renderSpread(currentSpread);
-
-        }
-
-    }
-
-    setTimeout(() => {
-
-        isScrolling = false;
-
-    }, 350);
-
-}, { passive: false });
-
-// =========================
 // INICIO
 // =========================
 
