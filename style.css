@@ -119,3 +119,39 @@ body{
     margin:0 auto 120px auto;
 
 }
+
+/* ==========================
+   BOOK
+========================== */
+
+.book{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+}
+
+/* ==========================
+   PAGE
+========================== */
+
+.page{
+
+    display:block;
+
+}
+
+/* ==========================
+   GUTTER
+========================== */
+
+.book-gutter{
+
+    width:18px;
+
+    flex-shrink:0;
+
+}
