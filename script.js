@@ -120,8 +120,8 @@ prevButton.addEventListener("click", async () => {
 // SCROLL
 // =========================
 
-book.addEventListener("wheel", async (event) => {
-
+document.addEventListener("wheel", async (event) => {
+    
     console.log("wheel");
     
     event.preventDefault();
