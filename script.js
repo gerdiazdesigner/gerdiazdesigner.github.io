@@ -41,8 +41,6 @@ book.appendChild(rightCanvas);
 let currentSpread = 0;
 const totalSpreads = Math.floor((pdf.numPages - 1) / 2);
 
-// Bloqueo para evitar múltiples cambios por un solo scroll
-let isScrolling = false;
 
 // =========================
 // RENDERIZAR UNA PÁGINA
