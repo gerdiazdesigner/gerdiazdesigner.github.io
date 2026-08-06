@@ -3,21 +3,21 @@ import * as pdfjsLib from "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.5.136
 pdfjsLib.GlobalWorkerOptions.workerSrc =
     "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.5.136/pdf.worker.min.mjs";
 
-// ----------
-// Cargar PDF
-// ----------
+// =========================
+// CARGAR PDF
+// =========================
 
 const pdf = await pdfjsLib.getDocument("Portfolio Nuevo_web.pdf").promise;
 
-// ----------
-// Contenedor del libro
-// ----------
+// =========================
+// CONTENEDOR DEL LIBRO
+// =========================
 
 const book = document.querySelector(".book");
 
-// ----------
-// Canvas
-// ----------
+// =========================
+// CREAR CANVAS
+// =========================
 
 const leftCanvas = document.createElement("canvas");
 leftCanvas.className = "page";
@@ -32,15 +32,17 @@ book.appendChild(leftCanvas);
 book.appendChild(gutter);
 book.appendChild(rightCanvas);
 
-// ----------
-// Renderizar página
-// ----------
+// =========================
+// RENDERIZAR UNA PÁGINA
+// =========================
 
-async function renderPage(pageNumber, canvas){
+async function renderPage(pageNumber, canvas) {
 
     const page = await pdf.getPage(pageNumber);
 
-    const viewport = page.getViewport({ scale: 1 });
+    const viewport = page.getViewport({
+        scale: 1
+    });
 
     canvas.width = viewport.width;
     canvas.height = viewport.height;
@@ -48,35 +50,17 @@ async function renderPage(pageNumber, canvas){
     const context = canvas.getContext("2d");
 
     await page.render({
-
         canvasContext: context,
         viewport: viewport
-
     }).promise;
 
 }
 
-async function renderPage(pageNumber, canvas){
+// =========================
+// RENDERIZAR UN SPREAD
+// =========================
 
-    const page = await pdf.getPage(pageNumber);
-
-    const viewport = page.getViewport({ scale: 1 });
-
-    canvas.width = viewport.width;
-    canvas.height = viewport.height;
-
-    const context = canvas.getContext("2d");
-
-    await page.render({
-
-        canvasContext: context,
-        viewport: viewport
-
-    }).promise;
-
-}
-
-async function renderSpread(spread){
+async function renderSpread(spread) {
 
     const leftPage = 2 + (spread * 2);
     const rightPage = leftPage + 1;
@@ -86,6 +70,14 @@ async function renderSpread(spread){
 
 }
 
+// =========================
+// ESTADO DEL VISOR
+// =========================
+
 let currentSpread = 0;
+
+// =========================
+// MOSTRAR PRIMER SPREAD
+// =========================
 
 await renderSpread(currentSpread);
