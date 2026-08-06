@@ -37,9 +37,10 @@ book.appendChild(rightCanvas);
 // =========================
 
 let currentSpread = 0;
-
-// El PDF comienza en la página 2
 const totalSpreads = Math.floor((pdf.numPages - 1) / 2);
+
+// Bloqueo para evitar múltiples cambios por un solo scroll
+let isScrolling = false;
 
 // =========================
 // RENDERIZAR UNA PÁGINA
@@ -77,13 +78,9 @@ async function renderSpread(spread) {
     await renderPage(leftPage, leftCanvas);
     await renderPage(rightPage, rightCanvas);
 
+    updateButtons();
+
 }
-
-// =========================
-// MOSTRAR PRIMER SPREAD
-// =========================
-
-await renderSpread(currentSpread);
 
 // =========================
 // BOTONES
@@ -92,20 +89,12 @@ await renderSpread(currentSpread);
 const prevButton = document.getElementById("prevButton");
 const nextButton = document.getElementById("nextButton");
 
-// =========================
-// ACTUALIZAR ESTADO BOTONES
-// =========================
-
 function updateButtons() {
 
     prevButton.disabled = currentSpread === 0;
     nextButton.disabled = currentSpread >= totalSpreads - 1;
 
 }
-
-// =========================
-// FLECHA DERECHA
-// =========================
 
 nextButton.addEventListener("click", async () => {
 
@@ -115,13 +104,7 @@ nextButton.addEventListener("click", async () => {
 
     await renderSpread(currentSpread);
 
-    updateButtons();
-
 });
-
-// =========================
-// FLECHA IZQUIERDA
-// =========================
 
 prevButton.addEventListener("click", async () => {
 
@@ -131,12 +114,50 @@ prevButton.addEventListener("click", async () => {
 
     await renderSpread(currentSpread);
 
-    updateButtons();
-
 });
 
 // =========================
-// ESTADO INICIAL
+// SCROLL
 // =========================
 
-updateButtons();
+window.addEventListener("wheel", async (event) => {
+
+    event.preventDefault();
+
+    if (isScrolling) return;
+
+    isScrolling = true;
+
+    if (event.deltaY > 0) {
+
+        if (currentSpread < totalSpreads - 1) {
+
+            currentSpread++;
+            await renderSpread(currentSpread);
+
+        }
+
+    } else {
+
+        if (currentSpread > 0) {
+
+            currentSpread--;
+            await renderSpread(currentSpread);
+
+        }
+
+    }
+
+    setTimeout(() => {
+
+        isScrolling = false;
+
+    }, 350);
+
+}, { passive: false });
+
+// =========================
+// INICIO
+// =========================
+
+await renderSpread(currentSpread);
