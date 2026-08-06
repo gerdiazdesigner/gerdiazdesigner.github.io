@@ -18,7 +18,7 @@ const context = canvas.getContext("2d");
 canvas.width = viewport.width;
 canvas.height = viewport.height;
 
-document.getElementById("portfolio").appendChild(canvas);
+document.getElementById("viewer").appendChild(canvas);
 
 await page.render({
     canvasContext: context,
