@@ -3,24 +3,57 @@ import * as pdfjsLib from "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.5.136
 pdfjsLib.GlobalWorkerOptions.workerSrc =
     "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.5.136/pdf.worker.min.mjs";
 
+// Cargar el PDF
+
 const pdf = await pdfjsLib.getDocument("Portfolio Nuevo_web.pdf").promise;
 
-const page = await pdf.getPage(1);
+// Contenedor principal
 
-const scale = 1.5;
+const viewer = document.getElementById("viewer");
 
-const viewport = page.getViewport({ scale });
+// Crear estructura del libro
 
-const canvas = document.createElement("canvas");
+const book = document.createElement("div");
+book.className = "book";
 
-const context = canvas.getContext("2d");
+const leftCanvas = document.createElement("canvas");
+leftCanvas.className = "page";
 
-canvas.width = viewport.width;
-canvas.height = viewport.height;
+const gutter = document.createElement("div");
+gutter.className = "book-gutter";
 
-document.getElementById("viewer").appendChild(canvas);
+const rightCanvas = document.createElement("canvas");
+rightCanvas.className = "page";
 
-await page.render({
-    canvasContext: context,
-    viewport: viewport
-}).promise;
+book.appendChild(leftCanvas);
+book.appendChild(gutter);
+book.appendChild(rightCanvas);
+
+viewer.appendChild(book);
+
+// Función para renderizar una página
+
+async function renderPage(pageNumber, canvas) {
+
+    const page = await pdf.getPage(pageNumber);
+
+    const scale = 1.4;
+
+    const viewport = page.getViewport({ scale });
+
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+
+    const context = canvas.getContext("2d");
+
+    await page.render({
+        canvasContext: context,
+        viewport: viewport
+    }).promise;
+
+}
+
+// Renderizar el primer spread
+
+await renderPage(2, leftCanvas);
+await renderPage(3, rightCanvas);
